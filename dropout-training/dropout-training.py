@@ -1,17 +1,10 @@
 import numpy as np
 
 def dropout(x, p=0.5, rng=None):
-    """
-    Apply dropout to input x with probability p.
-    Return (output, dropout_pattern).
-    """
+    x=np.array(x)
     if rng is None:
-        rng = np.random.default_rng()
-    x = np.array(x, dtype = float)
-    mask = (rng.random(x.shape) > p)/(1-p)
-    out = (x*mask)
-    return out, mask
+        rng= np.random.default_rng()
+    mask=(rng.random(x.shape)>p)/(1-p)
+    x=x*mask
+    return x,mask
     
-x=[[1,1,1,1],[1,1,1,1],[1,1,1,1],[1,1,1,1]]
-
-print(dropout(x,0.25))
