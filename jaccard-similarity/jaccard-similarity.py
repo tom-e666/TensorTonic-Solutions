@@ -6,17 +6,23 @@ def jaccard_similarity(set_a, set_b):
     # import numpy as np
     # a = np.array(set_a)
     # b= np.array(set_b)
-    c = set_a+set_b
-    import numpy as np
-    c= np.unique(c)
-    count_and=0
-    count_or=0
-    for i in c:
-        if i in set_a and i in set_b:
-            count_and+=1
-    if len(set_a)==0 and len(set_b)==0:
+    # c = set_a+set_b
+    # import numpy as np
+    # c= np.unique(c)
+    # count_and=0
+    # count_or=0
+    # for i in c:
+    #     if i in set_a and i in set_b:
+    #         count_and+=1
+    # if len(set_a)==0 and len(set_b)==0:
+    #     return 0.0
+    # j= count_and/len(c)
+    # return j
+    a,b = set(set_a),set(set_b)
+    if not a and not b:
         return 0.0
-    j= count_and/len(c)
-    return j
+    intersection = a.intersection(b)
+    union = a.union(b)
+    return len(intersection)/len(union)
             
     
